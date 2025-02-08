@@ -13,6 +13,16 @@ plama=[
 
 ]
 
-sheet.cell(row=4,column=2,value="try")
+for i in range(0,4):
+    for j in range(0,len(plama[i])):
+        sheet.cell(row=i+1,column=j+1,value=plama[i][j])
 owb.save(filename)
 print("done")
+
+owb=openpyxl.load_workbook(filename)
+sheet=owb.get_sheet_by_name('mytile')
+
+for r in sheet.rows:
+    for c in r:
+        print(c.value,"\t" ,end="")
+        print()
